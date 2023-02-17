@@ -12,7 +12,7 @@
         android:theme="@style/Theme.EcommerceApp"
         tools:targetApi="31" >
         <activity
-            android:name=".ShoppingActivity"
+            android:name=".activities.ShoppingActivity"
             android:exported="false" />
         <activity
             android:name=".activities.LoginRegisterActivity"
