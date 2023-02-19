@@ -2,4 +2,8 @@
     <string name="app_name">EcommerceApp</string>
     <string name="rightAddress">The Right Address\nFor Shopping \n Anyday</string>
     <string name="quality">it is now very easy to reach the \n best quality among all time \n products on the internet</string>
+    <string name="lets_login">Let\'s Login</string>
+    <string name="have_an_account">have an account? log in</string>
+    <string name="lets_register">Let\'s Register</string>
+    <string name="donot_have_an_account">Don\'t have an account? Register</string>
 </resources>

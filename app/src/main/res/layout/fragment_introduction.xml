@@ -42,7 +42,7 @@
 
 
     <TextView
-        android:id="@+id/right_address"
+        android:id="@+id/tv_lets_register"
         style="@style/h4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -55,14 +55,14 @@
         app:layout_constraintTop_toTopOf="@id/bottom_right_image_guideline" />
 
     <TextView
-        android:id="@+id/description_address"
+        android:id="@+id/tv_have_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/quality"
         style="@style/h2"
-        app:layout_constraintEnd_toEndOf="@+id/right_address"
-        app:layout_constraintStart_toStartOf="@+id/right_address"
-        app:layout_constraintTop_toBottomOf="@+id/right_address"
+        app:layout_constraintEnd_toEndOf="@+id/tv_lets_register"
+        app:layout_constraintStart_toStartOf="@+id/tv_lets_register"
+        app:layout_constraintTop_toBottomOf="@+id/tv_lets_register"
         android:textAlignment="center"
         android:gravity="center"
         android:layout_marginTop="15dp"
@@ -119,9 +119,9 @@
         android:text="Start"
         style="@style/blueButtonStyle"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/description_address"
-        app:layout_constraintStart_toStartOf="@+id/description_address"
-        app:layout_constraintTop_toBottomOf="@+id/description_address" />
+        app:layout_constraintEnd_toEndOf="@+id/tv_have_account"
+        app:layout_constraintStart_toStartOf="@+id/tv_have_account"
+        app:layout_constraintTop_toBottomOf="@+id/tv_have_account" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
