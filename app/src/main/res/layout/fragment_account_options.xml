@@ -16,7 +16,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/tvAppName"
+            android:id="@+id/tv_app_name_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_kleine_shape"
@@ -41,7 +41,7 @@
             android:text="@string/rightAddress"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvAppName" />
+            app:layout_constraintTop_toBottomOf="@id/tv_app_name_login" />
 
         <TextView
             android:id="@+id/tv_have_account"
@@ -58,7 +58,7 @@
             />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_register_register"
+            android:id="@+id/btn_register_account_options"
             android:layout_width="@dimen/mediumButtonWidth"
             android:layout_height="@dimen/mediumButtonHeight"
             android:text="Register"
@@ -78,7 +78,7 @@
             android:text="Login"
             app:layout_constraintEnd_toEndOf="@+id/tv_have_account"
             app:layout_constraintStart_toStartOf="@+id/tv_have_account"
-            app:layout_constraintTop_toBottomOf="@+id/btn_register_register" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_register_account_options" />
 
 
 

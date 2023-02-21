@@ -54,7 +54,7 @@
 
 
         <TextView
-            android:id="@+id/tvAppName"
+            android:id="@+id/tv_app_name_login"
             style="@style/h3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
             android:text="@string/lets_register"
             app:layout_constraintEnd_toStartOf="@+id/guideline_login_right"
             app:layout_constraintStart_toStartOf="@+id/guideline_login_left"
-            app:layout_constraintTop_toBottomOf="@id/tvAppName" />
+            app:layout_constraintTop_toBottomOf="@id/tv_app_name_login" />
 
         <TextView
             android:id="@+id/tv_have_account"

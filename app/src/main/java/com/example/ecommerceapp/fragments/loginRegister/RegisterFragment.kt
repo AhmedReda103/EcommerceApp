@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.ecommerceapp.R
 import com.example.ecommerceapp.data.User
 import com.example.ecommerceapp.databinding.FragmentRegisterBinding
@@ -37,7 +38,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
-            this.btnRegisterRegister.setOnClickListener {
+              btnRegisterRegister.setOnClickListener {
                 val user = User(
                     this.etFirstNameRegister.text.toString().trim(),
                     this.etLastNameRegister.text.toString().trim(),
@@ -45,6 +46,10 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                 )
                 val password = this.etPasswordRegister.text.toString()
                 viewModel.createAccountWithEmailAndPassword(user, password)
+            }
+
+            tvHaveAccount.setOnClickListener {
+                findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
             }
         }
 
@@ -56,6 +61,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                     }
                     is Resource.Success -> {
                         binding.btnRegisterRegister.revertAnimation()
+                        findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
                         Log.d(TAG, it.data?.email.toString())
                     }
                     is Resource.Error -> {
@@ -64,7 +70,6 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                     else -> Unit
                 }
             }
-
         }
 
         lifecycleScope.launchWhenStarted {
