@@ -16,6 +16,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/login_register_nav_graph"
-        tools:layout_editor_absoluteX="1dp" />
+         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
