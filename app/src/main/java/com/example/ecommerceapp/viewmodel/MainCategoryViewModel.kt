@@ -24,7 +24,7 @@ class MainCategoryViewModel @Inject constructor(private val firestore: FirebaseF
     val bestDealsProducts = _bestDealsProducts.asStateFlow()
 
     private val _bestProducts = MutableStateFlow<Resource<List<Product>>>(Resource.Unspecified())
-    val bestProducts = _bestDealsProducts.asStateFlow()
+    val bestProducts = _bestProducts.asStateFlow()
 
     private val pagingInfo = PagingInfo()
 
@@ -34,7 +34,7 @@ class MainCategoryViewModel @Inject constructor(private val firestore: FirebaseF
         fetchBestDealsProducts()
     }
 
-    fun fetchSpecialProduct() {
+    private fun fetchSpecialProduct() {
         viewModelScope.launch {
             _specialProducts.emit(Resource.Loading())
         }
@@ -53,7 +53,7 @@ class MainCategoryViewModel @Inject constructor(private val firestore: FirebaseF
         }
     }
 
-    fun fetchBestDealsProducts(){
+    private fun fetchBestDealsProducts(){
         viewModelScope.launch {
             _bestDealsProducts.emit(Resource.Loading())
         }

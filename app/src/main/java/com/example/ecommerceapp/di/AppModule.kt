@@ -8,8 +8,10 @@ import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.datastore.preferences.preferencesDataStoreFile
+import com.example.ecommerceapp.firebase.FirebaseCommon
 import com.example.ecommerceapp.util.Constants
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import dagger.Module
@@ -40,6 +42,11 @@ object AppModule : Application() {
             context.preferencesDataStoreFile(Constants.INTRODUCTION_FRAGMENT_DS)
         }
     )
+
+    @Provides
+    @Singleton
+    fun provideFirebaseCommon(firebaseAuth: FirebaseAuth , firebaseFirestore: FirebaseFirestore) =
+        FirebaseCommon(firebaseFirestore , firebaseAuth)
 
 
 }

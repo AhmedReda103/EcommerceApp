@@ -10,6 +10,7 @@ import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ecommerceapp.R
@@ -18,6 +19,7 @@ import com.example.ecommerceapp.adapters.BestProductsAdapter
 import com.example.ecommerceapp.adapters.SpecialProductsAdapter
 import com.example.ecommerceapp.databinding.FragmentMainCategoryBinding
 import com.example.ecommerceapp.util.Resource
+import com.example.ecommerceapp.util.showBottomNavigationbar
 import com.example.ecommerceapp.viewmodel.MainCategoryViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -41,9 +43,25 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         setupSpecialProductsRV()
         setupBestDealsProductsRV()
-        setupBestProductAdapter()
+        setupBestProductRV()
+
+        specialProductsAdapter.onClick = {
+            val product = Bundle().apply { putParcelable("product" , it) }
+            findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment , product)
+        }
+
+        bestProductsAdapter.onClick={
+            val product = Bundle().apply { putParcelable("product" , it) }
+            findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment ,product )
+        }
+
+        bestDealsAdapter.onClick={
+            val product = Bundle().apply { putParcelable("product" , it) }
+            findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment ,product)
+        }
 
         binding.nestedScrollMainCategory.setOnScrollChangeListener(
             NestedScrollView.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
@@ -59,8 +77,8 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
                         binding.bestProductsProgressbar.visibility = View.VISIBLE
                     }
                     is Resource.Success -> {
-                        bestProductsAdapter.differ.submitList(it.data)
                         binding.bestProductsProgressbar.visibility = View.INVISIBLE
+                        bestProductsAdapter.differ.submitList(it.data)
                     }
                     is Resource.Error -> {
                         binding.bestProductsProgressbar.visibility = View.INVISIBLE
@@ -117,7 +135,7 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
 
     }
 
-    private fun setupBestProductAdapter() {
+    private fun setupBestProductRV() {
         bestProductsAdapter = BestProductsAdapter()
         binding.rvBestProducts.apply {
             layoutManager =
@@ -153,4 +171,8 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
         binding.mainCategoryProgressbar.visibility = View.VISIBLE
     }
 
+    override fun onResume() {
+        super.onResume()
+        showBottomNavigationbar()
+    }
 }
