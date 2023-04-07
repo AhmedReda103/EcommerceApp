@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ecommerceapp.R
 import com.example.ecommerceapp.adapters.CartProductsAdapter
+import com.example.ecommerceapp.data.CartProduct
 import com.example.ecommerceapp.databinding.FragmentCartBinding
 import com.example.ecommerceapp.firebase.FirebaseCommon
 import com.example.ecommerceapp.util.Resource
@@ -67,10 +68,11 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
             }
 
         }
-
+        var totalPrice = 0f
         lifecycleScope.launch {
             viewModel.productsPrice.collectLatest {price->
                 price?.let {
+                    totalPrice = it
                     binding.tvTotalPrice.text = "$ $price"
                 }
             }
@@ -104,6 +106,11 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
         }
         cartAdapter.onMinusClick ={
             viewModel.changeQuantity(FirebaseCommon.QuantityChanging.DECREASE , it)
+        }
+
+        binding.buttonCheckout.setOnClickListener {
+            val action = CartFragmentDirections.actionCartFragmentToBillingFragment(totalPrice ,cartAdapter.differ.currentList.toTypedArray() )
+            findNavController().navigate(action)
         }
 
 
