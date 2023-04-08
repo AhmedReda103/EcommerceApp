@@ -90,8 +90,8 @@ dependencies {
     //Preferences DataStore
     implementation "androidx.datastore:datastore-preferences:1.1.0-alpha01"
 
-    implementation 'org.jetbrains.kotlinx-coroutines-play-services:1.5.1'
-
+    //Coroutines for firebase
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.5.1'
 
 }
 

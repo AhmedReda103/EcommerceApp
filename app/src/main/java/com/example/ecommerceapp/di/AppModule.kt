@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -47,6 +48,11 @@ object AppModule : Application() {
     @Singleton
     fun provideFirebaseCommon(firebaseAuth: FirebaseAuth , firebaseFirestore: FirebaseFirestore) =
         FirebaseCommon(firebaseFirestore , firebaseAuth)
+
+
+    @Provides
+    @Singleton
+    fun provideStorage() = FirebaseStorage.getInstance().reference
 
 
 }
