@@ -132,7 +132,9 @@ class BillingFragment : Fragment() {
             showConfirmationDialog()
         }
 
-
+        binding.imageCloseBilling.setOnClickListener {
+            findNavController().navigateUp()
+        }
 
     }
 
